@@ -1,0 +1,109 @@
+Compiling rust_kafka v0.1.0 (C:\Users\shuhi\OneDrive\Dokumente\code_sources\rust\rust_kafka)
+error: expected `,`, found `.`
+   --> src\main.rs:411:17
+    |
+411 |     println!("=".repeat(60));
+    |                 ^ expected `,`
+
+error: argument never used
+   --> src\main.rs:411:18
+    |
+411 |     println!("=".repeat(60));
+    |              --- ^^^^^^^^^^ argument never used
+    |              |
+    |              formatting specifier missing
+
+error: expected `,`, found `+`
+   --> src\main.rs:487:19
+    |
+487 |     println!("\n" + "=".repeat(60));
+    |                   ^ expected `,`
+
+error: expected `,`, found `.`
+   --> src\main.rs:489:17
+    |
+489 |     println!("=".repeat(60));
+    |                 ^ expected `,`
+
+error: argument never used
+   --> src\main.rs:489:18
+    |
+489 |     println!("=".repeat(60));
+    |              --- ^^^^^^^^^^ argument never used
+    |              |
+    |              formatting specifier missing
+
+error[E0425]: cannot find function `repeat` in this scope
+   --> src\main.rs:411:18
+    |
+411 |     println!("=".repeat(60));
+    |                  ^^^^^^ not found in this scope
+    |
+help: consider importing one of these functions
+    |
+1   + use crate::io::repeat;
+    |
+1   + use std::array::repeat;
+    |
+1   + use std::io::repeat;
+    |
+1   + use std::iter::repeat;
+    |
+      and 2 other candidates
+
+error[E0425]: cannot find function `repeat` in this scope
+   --> src\main.rs:489:18
+    |
+489 |     println!("=".repeat(60));
+    |                  ^^^^^^ not found in this scope
+    |
+help: consider importing one of these functions
+    |
+1   + use crate::io::repeat;
+    |
+1   + use std::array::repeat;
+    |
+1   + use std::io::repeat;
+    |
+1   + use std::iter::repeat;
+    |
+      and 2 other candidates
+
+warning: unused import: `std::collections::HashMap`
+ --> src\main.rs:1:5
+  |
+1 | use std::collections::HashMap;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused imports: `BufRead` and `BufReader`
+ --> src\main.rs:2:34
+  |
+2 | use std::io::{self, Read, Write, BufReader, BufRead};
+  |                                  ^^^^^^^^^  ^^^^^^^
+
+error[E0423]: expected function, found macro `println`
+  --> src\main.rs:79:9
+   |
+79 |         println("API Key (ApiVersions): {}", ApiKey::ApiVersions as i16);
+   |         ^^^^^^^ not a function
+   |
+help: use `!` to invoke the macro
+   |
+79 |         println!("API Key (ApiVersions): {}", ApiKey::ApiVersions as i16);
+   |                +
+
+warning: value assigned to `offset` is never read
+   --> src\main.rs:308:9
+    |
+308 |         offset += 4;
+    |         ^^^^^^
+    |
+    = help: maybe it is overwritten before being read?
+    = note: `#[warn(unused_assignments)]` on by default
+
+Some errors have detailed explanations: E0423, E0425.
+For more information about an error, try `rustc --explain E0423`.
+warning: `rust_kafka` (bin "rust_kafka") generated 3 warnings
+error: could not compile `rust_kafka` (bin "rust_kafka") due to 8 previous errors; 3 warnings emitted
