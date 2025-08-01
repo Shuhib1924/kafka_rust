@@ -1,109 +1,200 @@
-Compiling rust_kafka v0.1.0 (C:\Users\shuhi\OneDrive\Dokumente\code_sources\rust\rust_kafka)
-error: expected `,`, found `.`
-   --> src\main.rs:411:17
-    |
-411 |     println!("=".repeat(60));
-    |                 ^ expected `,`
-
-error: argument never used
-   --> src\main.rs:411:18
-    |
-411 |     println!("=".repeat(60));
-    |              --- ^^^^^^^^^^ argument never used
-    |              |
-    |              formatting specifier missing
-
-error: expected `,`, found `+`
-   --> src\main.rs:487:19
-    |
-487 |     println!("\n" + "=".repeat(60));
-    |                   ^ expected `,`
-
-error: expected `,`, found `.`
-   --> src\main.rs:489:17
-    |
-489 |     println!("=".repeat(60));
-    |                 ^ expected `,`
-
-error: argument never used
-   --> src\main.rs:489:18
-    |
-489 |     println!("=".repeat(60));
-    |              --- ^^^^^^^^^^ argument never used
-    |              |
-    |              formatting specifier missing
-
-error[E0425]: cannot find function `repeat` in this scope
-   --> src\main.rs:411:18
-    |
-411 |     println!("=".repeat(60));
-    |                  ^^^^^^ not found in this scope
-    |
-help: consider importing one of these functions
-    |
-1   + use crate::io::repeat;
-    |
-1   + use std::array::repeat;
-    |
-1   + use std::io::repeat;
-    |
-1   + use std::iter::repeat;
-    |
-      and 2 other candidates
-
-error[E0425]: cannot find function `repeat` in this scope
-   --> src\main.rs:489:18
-    |
-489 |     println!("=".repeat(60));
-    |                  ^^^^^^ not found in this scope
-    |
-help: consider importing one of these functions
-    |
-1   + use crate::io::repeat;
-    |
-1   + use std::array::repeat;
-    |
-1   + use std::io::repeat;
-    |
-1   + use std::iter::repeat;
-    |
-      and 2 other candidates
-
-warning: unused import: `std::collections::HashMap`
- --> src\main.rs:1:5
-  |
-1 | use std::collections::HashMap;
-  |     ^^^^^^^^^^^^^^^^^^^^^^^^^
-  |
-  = note: `#[warn(unused_imports)]` on by default
-
-warning: unused imports: `BufRead` and `BufReader`
- --> src\main.rs:2:34
-  |
-2 | use std::io::{self, Read, Write, BufReader, BufRead};
-  |                                  ^^^^^^^^^  ^^^^^^^
-
-error[E0423]: expected function, found macro `println`
-  --> src\main.rs:79:9
+error[E0432]: unresolved import `colored`
+  --> src\main.rs:61:5
    |
-79 |         println("API Key (ApiVersions): {}", ApiKey::ApiVersions as i16);
-   |         ^^^^^^^ not a function
+61 | use colored::Colorize;
+   |     ^^^^^^^ use of unresolved module or unlinked crate `colored`
    |
-help: use `!` to invoke the macro
+   = help: if you wanted to use a crate named `colored`, use `cargo add colored` to add it to your `Cargo.toml`
+
+error[E0432]: unresolved import `rand`
+  --> src\main.rs:62:5
    |
-79 |         println!("API Key (ApiVersions): {}", ApiKey::ApiVersions as i16);
-   |                +
+62 | use rand::Rng;
+   |     ^^^^ use of unresolved module or unlinked crate `rand`
+   |
+   = help: if you wanted to use a crate named `rand`, use `cargo add rand` to add it to your `Cargo.toml`
 
-warning: value assigned to `offset` is never read
-   --> src\main.rs:308:9
+warning: unnecessary parentheses around `match` scrutinee expression
+   --> src\main.rs:203:26
     |
-308 |         offset += 4;
-    |         ^^^^^^
+203 |         let hint = match (difference * 100 / max) {
+    |                          ^                      ^
     |
-    = help: maybe it is overwritten before being read?
-    = note: `#[warn(unused_assignments)]` on by default
+    = note: `#[warn(unused_parens)]` on by default
+help: remove these parentheses
+    |
+203 -         let hint = match (difference * 100 / max) {
+203 +         let hint = match difference * 100 / max {
+    |
 
-Some errors have detailed explanations: E0423, E0425.
-For more information about an error, try `rustc --explain E0423`.
-warning: `rust_kafka` (bin "rust_kafka") generated 3 warnings
-error: could not compile `rust_kafka` (bin "rust_kafka") due to 8 previous errors; 3 warnings emitted
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `rand`
+   --> src\main.rs:107:29
+    |
+107 |         let secret_number = rand::thread_rng().gen_range(1..=difficulty.max_number());
+    |                             ^^^^ use of unresolved module or unlinked crate `rand`
+    |
+    = help: if you wanted to use a crate named `rand`, use `cargo add rand` to add it to your `Cargo.toml`
+
+error[E0599]: no method named `yellow` found for reference `&'static str` in the current scope
+   --> src\main.rs:127:80
+    |
+127 | ...                   println!("{}", "📈 Too small! Try a bigger number.".yellow());
+    |                                                                           ^^^^^^ method not found in `&str`
+
+error[E0599]: no method named `yellow` found for reference `&'static str` in the current scope
+   --> src\main.rs:131:79
+    |
+131 | ...                   println!("{}", "📉 Too big! Try a smaller number.".yellow());
+    |                                                                          ^^^^^^ method not found in `&str`
+
+error[E0599]: no method named `red` found for reference `&'static str` in the current scope
+   --> src\main.rs:141:50
+    |
+141 |                     println!("{} {}", "❌ Error:".red(), e);
+    |                                                   ^^^ method not found in `&str`
+
+error[E0599]: no method named `green` found for reference `&'static str` in the current scope
+   --> src\main.rs:152:69
+    |
+152 |         println!("\n{}", "🎲 Welcome to the Number Guessing Game! 🎲".green().bold());
+    |                                                                       ^^^^^ method not found in `&str`
+
+error[E0599]: no method named `cyan` found for struct `String` in the current scope
+   --> src\main.rs:154:46
+    |
+154 |             format!("{:?}", self.difficulty).cyan(),
+    |                                              ^^^^ method not found in `String`
+
+error[E0599]: no method named `blue` found for reference `&'static str` in the current scope
+   --> src\main.rs:162:43
+    |
+162 |         print!("{}", "Enter your guess: ".blue());
+    |                                           ^^^^
+    |
+help: there is a method `le` with a similar name, but with different arguments
+   --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc\library\core\src\cmp.rs:1400:5
+
+error[E0599]: no method named `bold` found for struct `String` in the current scope
+   --> src\main.rs:189:55
+    |
+189 |         println!("You guessed: {}", guess.to_string().bold());
+    |                                                       ^^^^ method not found in `String`
+
+error[E0599]: no method named `magenta` found for reference `&str` in the current scope
+   --> src\main.rs:211:38
+    |
+211 |             println!("{}", hint_text.magenta());
+    |                                      ^^^^^^^ method not found in `&str`
+
+error[E0599]: no method named `green` found for reference `&'static str` in the current scope
+   --> src\main.rs:218:63
+    |
+218 |         println!("\n{}", "🎉 Congratulations! You found it! 🎉".green().bold());
+    |                                                                 ^^^^^ method not found in `&str`
+
+error[E0599]: no method named `cyan` found for struct `String` in the current scope
+   --> src\main.rs:219:71
+    |
+219 |         println!("The number was: {}", self.secret_number.to_string().cyan().bold());
+    |                                                                       ^^^^ method not found in `String`
+
+error[E0599]: no method named `yellow` found for reference `&str` in the current scope
+   --> src\main.rs:230:33
+    |
+230 |         println!("{}", feedback.yellow());
+    |                                 ^^^^^^ method not found in `&str`
+
+error[E0599]: no method named `bold` found for struct `String` in the current scope
+   --> src\main.rs:233:45
+    |
+233 |             self.stats.attempts.to_string().bold(),
+    |                                             ^^^^ method not found in `String`
+
+error[E0599]: no method named `bold` found for struct `String` in the current scope
+   --> src\main.rs:234:47
+    |
+234 |             self.stats.hints_used.to_string().bold()
+    |                                               ^^^^ method not found in `String`
+
+error[E0599]: no method named `cyan` found for reference `&'static str` in the current scope
+   --> src\main.rs:242:47
+    |
+242 |         println!("{}", "\nSelect difficulty:".cyan().bold());
+    |                                               ^^^^ method not found in `&str`
+
+error[E0599]: no method named `green` found for reference `&'static str` in the current scope
+   --> src\main.rs:243:53
+    |
+243 |         println!("1) {} (1-50, with hints)", "Easy".green());
+    |                                                     ^^^^^ method not found in `&str`
+
+error[E0599]: no method named `yellow` found for reference `&'static str` in the current scope
+   --> src\main.rs:244:56
+    |
+244 |         println!("2) {} (1-100, with hints)", "Medium".yellow());
+    |                                                        ^^^^^^ method not found in `&str`
+
+error[E0599]: no method named `red` found for reference `&'static str` in the current scope
+   --> src\main.rs:245:52
+    |
+245 |         println!("3) {} (1-200, no hints)", "Hard".red());
+    |                                                    ^^^ method not found in `&str`
+
+error[E0599]: no method named `blue` found for reference `&'static str` in the current scope
+   --> src\main.rs:247:44
+    |
+247 |         print!("{}", "Your choice (1-3): ".blue());
+    |                                            ^^^^
+    |
+help: there is a method `le` with a similar name, but with different arguments
+   --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc\library\core\src\cmp.rs:1400:5
+
+error[E0599]: no method named `red` found for reference `&'static str` in the current scope
+   --> src\main.rs:252:70
+    |
+252 |             println!("{}", "Failed to read input. Please try again.".red());
+    |                                                                      ^^^ method not found in `&str`
+
+error[E0599]: no method named `red` found for reference `&'static str` in the current scope
+   --> src\main.rs:260:76
+    |
+260 |             _ => println!("{}", "Invalid choice. Please enter 1, 2, or 3.".red()),
+    |                                                                            ^^^ method not found in `&str`
+
+error[E0599]: no method named `cyan` found for reference `&'static str` in the current scope
+   --> src\main.rs:267:42
+    |
+267 |     print!("\n{}", "Play again? (y/n): ".cyan());
+    |                                          ^^^^ method not found in `&str`
+
+error[E0277]: the `?` operator can only be used in a function that returns `Result` or `Option` (or another type that implements `FromResidual`)
+   --> src\main.rs:271:43
+    |
+266 | fn play_again() -> bool {
+    | ----------------------- this function should return `Result` or `Option` to accept `?`
+...
+271 |     io::stdin().read_line(&mut input).ok()?;
+    |                                           ^ cannot use the `?` operator in a function that returns `bool`
+
+error[E0599]: no method named `cyan` found for reference `&'static str` in the current scope
+   --> src\main.rs:277:45
+    |
+277 |     println!("{}", "🎮 RUST GUESSING GAME 🎮".cyan().bold());
+    |                                               ^^^^ method not found in `&str`
+
+error[E0599]: no method named `cyan` found for reference `&'static str` in the current scope
+   --> src\main.rs:278:43
+    |
+278 |     println!("{}", "====================".cyan());
+    |                                           ^^^^ method not found in `&str`
+
+error[E0599]: no method named `green` found for reference `&'static str` in the current scope
+   --> src\main.rs:290:55
+    |
+290 |     println!("\n{}", "Thanks for playing! Goodbye! 👋".green().bold());
+    |                                                        ^^^^^ method not found in `&str`
+
+Some errors have detailed explanations: E0277, E0432, E0433, E0599.
+For more information about an error, try `rustc --explain E0277`.
+warning: `rust_kafka` (bin "rust_kafka") generated 1 warning
+error: could not compile `rust_kafka` (bin "rust_kafka") due to 28 previous errors; 1 warning emitted
